@@ -1,7 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+const Post = require('./models/post');
 
 const app = express();
+// TiMEkZFxewDTfde4
+mongoose.connect("mongodb+srv://dmytro:TiMEkZFxewDTfde4@cluster0-2p8lv.mongodb.net/node-angular?retryWrites=true&w=majority",
+  { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.info("Connected to DB");
+  })
+  .catch(() => {
+    console.info("Connection failed");
+  })
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -14,7 +26,11 @@ app.use((req, res, next) => {
 });
 
 app.post("/api", (req, res, next) => {
-  const post = req.body;
+  const post = new Post({
+    title: req.body.title,
+    content: req.body.content
+  });
+  post.save();
   console.info(post, 'post');
   res.status(201).json({
     message: "Post added succesfully"
@@ -22,15 +38,13 @@ app.post("/api", (req, res, next) => {
 })
 
 app.get('/api', (req, res) => {
-  const posts = [
-    { id: 1, title: 'server-side post', content: 'content' },
-    { id: 2, title: 'server-side post2', content: 'content2' },
-  ];
-
-  res.status(200).json({
-    message: 'all good',
-    posts
-  });
+  Post.find()
+    .then((documents) => {
+      res.status(200).json({
+        message: 'all good',
+        posts: documents
+      });
+    })
 });
 
 module.exports = app;

@@ -38,8 +38,20 @@ app.post("/api", (req, res, next) => {
   });
 })
 
+app.get("/api/:id", (req, res, next) => {
+  Post.findById(req.params.id)
+    .then((post) => {
+      if (post) {
+        res.status(200).json(post);
+      } else {
+        res.status(404).json({
+          message: "Post is not found"
+        })
+      }
+    });
+});
+
 app.put("/api/:id", (req, res, next) => {
-  console.info(req.body.title, '------');
   const post = new Post({
     _id: req.body.id,
     title: req.body.title,
@@ -47,7 +59,6 @@ app.put("/api/:id", (req, res, next) => {
   });
   Post.updateOne({ _id: req.params.id }, post)
     .then((result) => {
-      console.info(result);
       res.status(200).json({
         message: "Update successful"
       });
@@ -65,7 +76,6 @@ app.get("/api", (req, res) => {
 });
 
 app.del("/api/:id", (req, res, next) => {
-  console.info(req.params.id);
   Post.deleteOne({
     _id: req.params.id
   }).then((result) => {

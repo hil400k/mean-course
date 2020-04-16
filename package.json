@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start:server": "nodemon server.js",
-    "mongo-shell": "mongo \"mongodb+srv://cluster0-2p8lv.mongodb.net/test\"  --username dmytro"
+    "start-server": "nodemon server.js",
+    "mongo-shell": "mongo \"mongodb+srv://cluster0-2p8lv.mongodb.net/test\"  --username dmytro --password TiMEkZFxewDTfde4"
   },
   "private": true,
   "dependencies": {

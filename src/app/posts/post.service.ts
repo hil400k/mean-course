@@ -42,8 +42,8 @@ export class PostService {
     return this.postsUpdated.asObservable();
   }
 
-  updatePost(id: string, title: string, content: string) {
-    const post: Post = { id, title, content };
+  updatePost(id: string, title: string, content: string, imagePath: string) {
+    const post: Post = { id, title, content, imagePath };
 
     this.http.put(`http://localhost:3000/api/${id}`, post)
       .subscribe((res) => {
@@ -62,12 +62,13 @@ export class PostService {
     postData.append('content', content);
     postData.append('image', image, title);
 
-    this.http.post<{message: string, postId: string}>('http://localhost:3000/api', postData)
+    this.http.post<{message: string, post: Post}>('http://localhost:3000/api', postData)
       .subscribe((responseData) => {
         const post = {
-          id: responseData.postId,
-          title,
-          content
+          id: responseData.post.id,
+          title: responseData.post.title,
+          content: responseData.post.content,
+          imagePath: responseData.post.imagePath
         };
 
         this.posts.push(post);

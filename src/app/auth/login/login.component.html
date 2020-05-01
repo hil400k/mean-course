@@ -22,7 +22,7 @@
              placeholder="Password">
       <mat-error *ngIf="passwordInput.invalid">Please, enter valid password</mat-error>
     </mat-form-field>
-    <button color="primary" mat-raised-button type="submit">Login</button>
+    <button *ngIf="!isLoading" color="primary" mat-raised-button type="submit">Login</button>
   </form>
 
 </mat-card>

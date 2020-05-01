@@ -7,7 +7,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
-  isLoading: false;
+  isLoading = false;
 
   constructor(
     private authService: AuthService
@@ -16,6 +16,7 @@ export class SignupComponent {
 
   onSignup(form: NgForm) {
     if (form.valid) {
+      this.isLoading = true;
       this.authService.createUser(form.value.email, form.value.password);
     }
   }

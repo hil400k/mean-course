@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build-prod": "ng build --configuration=production",
+    "deploy": "cd backend; git add .; git commit -m 'deploy'; git push heroku master;",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

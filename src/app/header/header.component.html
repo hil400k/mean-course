@@ -13,7 +13,7 @@
         <a routerLink="/auth/signup" routerLinkActive="link-active">Signup</a>
       </li>
       <li *ngIf="userIsAuthenticated" class="link-wrap">
-        <button mat-button (click)="onLogout()">Logout</button>
+        <a (click)="onLogout()">Logout</a>
       </li>
     </ul>
   </div>

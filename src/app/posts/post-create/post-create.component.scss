@@ -1,11 +1,24 @@
+@import "src/theme";
 
-mat-form-field,
-textarea {
-  width: 100%;
+.post-create-container {
+  width: 80%;
+  margin: 100px auto;
 }
 
-mat-spinner {
-  margin: auto;
+app-spinner {
+  margin: 100px auto;
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+textarea {
+  width: 100%;
+  border: none;
+  border-top: 1px solid $primary-сolor;
+  font-size: 14px;
+  padding: 4px;
+  outline: none;
 }
 
 input[type="file"] {
@@ -15,8 +28,30 @@ input[type="file"] {
 .image-preview {
   height: 5rem;
   margin: 1rem 0;
+  text-align: center;
 }
 
 .image-preview img {
   height: 100%;
 }
+
+.btn {
+  display: block;
+  padding: 8px 16px;
+  font-size: 16px;
+  border-bottom: 2px solid $primary-сolor;
+  margin: auto;
+}
+
+.field {
+  display: block;
+  font-size: 16px;
+  border-bottom: 1px solid $secondary-color;
+  margin: 20px auto;
+  padding: 8px 16px;
+}
+
+.app-error-msg-color {
+  text-align: center;
+}
+

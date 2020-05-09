@@ -10,7 +10,7 @@
       required
       email
       #emailInput="ngModel">
-    <p class="error-msg" *ngIf="emailInput.invalid">Please, enter valid e-mail</p>
+    <p class="app-error-msg-color" *ngIf="emailInput.invalid">Please, enter valid e-mail</p>
     <input
       class="app-input password-input"
       type="password"
@@ -19,7 +19,7 @@
       #passwordInput="ngModel"
       required
       placeholder="Password">
-    <p class="error-msg" *ngIf="passwordInput.invalid">Please, enter valid password</p>
+    <p class="app-error-msg-color" *ngIf="passwordInput.invalid">Please, enter valid password</p>
     <button *ngIf="!isLoading" class="app-button submit-button" type="submit">Login</button>
   </form>
 </div>

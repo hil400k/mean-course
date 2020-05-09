@@ -66,10 +66,9 @@ export class PostListComponent implements OnInit, OnDestroy {
       });
   }
 
-  onChangedPage(pageData: PageEvent) {
+  onChangedPage(pageData: any) {
     this.isLoading = true;
-    this.currentPage = pageData.pageIndex + 1;
-    this.postsPerPage = pageData.pageSize;
+    this.currentPage = pageData.currentPage + 1;
     this.postService.getPosts(this.postsPerPage, this.currentPage);
   }
 }

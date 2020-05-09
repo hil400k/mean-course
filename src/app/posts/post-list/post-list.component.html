@@ -16,12 +16,10 @@
     </div>
   </app-accordion>
 </ng-container>
-<mat-paginator
+<app-paginator
   *ngIf="posts.length"
   [length]="totalPosts"
   [pageSize]="postsPerPage"
-  [pageSizeOptions]="pageSizeOptions"
-  (page)="onChangedPage($event)">
-
-</mat-paginator>
+  (pageChange)="onChangedPage($event)">
+</app-paginator>
 <p *ngIf="!posts.length && !isLoading" class="mat-body-1 info-text">No posts</p>

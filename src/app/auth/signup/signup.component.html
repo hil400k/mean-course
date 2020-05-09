@@ -1,5 +1,5 @@
 <div class="auth-container">
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <app-spinner *ngIf="isLoading"></app-spinner>
   <form *ngIf="!isLoading" (submit)="onSignup(signupForm)" #signupForm="ngForm">
       <input class="app-input email-input"
              type="email"

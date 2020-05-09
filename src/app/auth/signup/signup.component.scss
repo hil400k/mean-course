@@ -1,5 +1,12 @@
 @import "src/theme";
 
+app-spinner {
+  margin: 100px auto;
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
 .auth-container {
   width: 40%;
   min-width: 200px;

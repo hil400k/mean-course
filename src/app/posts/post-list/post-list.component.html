@@ -1,4 +1,4 @@
-<mat-spinner *ngIf="isLoading"></mat-spinner>
+<app-spinner *ngIf="isLoading"></app-spinner>
 <ng-container *ngIf="posts.length && !isLoading">
   <app-accordion *ngFor="let post of posts">
     <div class="accordion-header-content">

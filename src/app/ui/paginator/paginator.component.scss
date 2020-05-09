@@ -1,3 +1,5 @@
+@import "src/theme";
+
 .paginator {
   padding: 8px 0;
 }
@@ -6,9 +8,9 @@ button {
   border: none;
   outline: none;
   font-size: 18px;
-  color: #323232;
+  color: $secondary-color;
   border-radius: 50%;
   width: 30px;
   height: 30px;
-  border: 1px solid #3f51b5;
+  border: 1px solid $primary-сolor;
 }

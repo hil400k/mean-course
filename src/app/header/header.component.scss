@@ -1,3 +1,5 @@
+@import "src/theme";
+
 .header-nav {
   margin: 20px auto 0;
   width: 70%;
@@ -24,7 +26,7 @@ a {
   padding: 4px 0;
   cursor: pointer;
   &.link-active {
-    border-bottom: 2px solid #3f51b5;
+    border-bottom: 2px solid $primary-сolor
   }
 }
 

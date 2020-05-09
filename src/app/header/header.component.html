@@ -1,6 +1,11 @@
 <header>
   <div class="header-nav">
-    <span class="link-wrap"><a routerLink="/">Posts</a></span>
+    <span class="link-wrap">
+      <a routerLink="/"
+         routerLinkActive="link-active"
+         [routerLinkActiveOptions]="{ exact: true }"
+      >Posts</a>
+    </span>
     <span class="spacer"></span>
     <ul>
       <li *ngIf="userIsAuthenticated" class="link-wrap">

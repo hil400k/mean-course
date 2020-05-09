@@ -7,7 +7,7 @@ interface IPageChange {
 @Component({
   selector: 'app-paginator',
   template: `
-    <div>
+    <div class="paginator">
       <button (click)="previous()">
         <span>
           <

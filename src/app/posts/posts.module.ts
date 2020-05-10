@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostCreateComponent } from './post-create/post-create.component';
-import { AngularMaterialModule } from '../angular-material.module';
 import { UiModule } from '../ui/ui.module';
 
 @NgModule({
@@ -15,7 +14,6 @@ import { UiModule } from '../ui/ui.module';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    AngularMaterialModule,
     RouterModule,
     UiModule
   ]

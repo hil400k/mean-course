@@ -1,11 +1,8 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Post } from '../post.model';
 import { PostService } from '../post.service';
 import { Subscription } from 'rxjs';
-import { PageEvent } from '@angular/material/paginator';
 import { AuthService } from '../../auth/auth.service';
-import { subscriptionLogsToBeFn } from 'rxjs/internal/testing/TestScheduler';
-import { subscribeOn } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-list',

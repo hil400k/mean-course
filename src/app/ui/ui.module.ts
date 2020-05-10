@@ -3,12 +3,14 @@ import { AccordionComponent } from './accordion/accordion.component';
 import { CommonModule } from '@angular/common';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
     AccordionComponent,
     PaginatorComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    DialogComponent
   ],
   imports: [
     CommonModule
@@ -16,7 +18,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
   exports: [
     AccordionComponent,
     PaginatorComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    DialogComponent
   ]
 })
 export class UiModule { }

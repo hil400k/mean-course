@@ -11,7 +11,7 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class PostListComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
-  isLoading: boolean = false;
+  isLoading = false;
   totalPosts = 0;
   postsPerPage = 2;
   currentPage = 1;
@@ -51,6 +51,10 @@ export class PostListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.postsSub.unsubscribe();
     this.authStatusSub.unsubscribe();
+  }
+
+  showActions(post) {
+    return this.authService.isAdmin() || (this.userIsAuthenticated && this.userId === post.creator);
   }
 
   onDelete(id: string) {

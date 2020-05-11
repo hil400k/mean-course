@@ -16,6 +16,7 @@ export class AuthService {
   // @ts-ignore
   private tokenTimer: NodeJS.Timer;
   private userId: string;
+  private roles: string[];
   private authStatusListener = new Subject<boolean>();
 
   constructor(
@@ -40,6 +41,14 @@ export class AuthService {
     return this.userId;
   }
 
+  getUserRoles() {
+    return this.roles;
+  }
+
+  isAdmin() {
+    return this.getUserRoles() && this.getUserRoles().includes('admin');
+  }
+
   createUser(email: string, password: string) {
     const authData: AuthData = {
       email,
@@ -62,6 +71,7 @@ export class AuthService {
         this.token = authInfo.token;
         this.isAuthenticated = true;
         this.userId = authInfo.userId;
+        this.roles = authInfo.roles;
         this.setAuthTimer(expiresIn / 1000);
         this.authStatusListener.next(true);
       }
@@ -73,7 +83,7 @@ export class AuthService {
       email,
       password
     };
-    this.http.post<{ token: string, expiresIn: number, userId: string }>(`${BACKEND_URL}/login`, authData)
+    this.http.post<{ token: string, expiresIn: number, userId: string, roles: string[] }>(`${BACKEND_URL}/login`, authData)
       .subscribe((response) => {
         this.token = response.token;
         if (this.token) {
@@ -84,7 +94,8 @@ export class AuthService {
           this.authStatusListener.next(true);
           const now = new Date();
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
-          this.saveAuthData(this.token, expirationDate, response.userId);
+          this.roles = response.roles;
+          this.saveAuthData(this.token, expirationDate, response.userId, response.roles);
           this.router.navigate(['/']);
         }
       }, (error) => {
@@ -99,6 +110,7 @@ export class AuthService {
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
     this.userId = null;
+    this.roles = null;
     this.router.navigate(['/']);
   }
 
@@ -108,25 +120,32 @@ export class AuthService {
     }, duration * 1000);
   }
 
-  private saveAuthData(token: string, expirationDate: Date, userId: string) {
+  private saveAuthData(token: string, expirationDate: Date, userId: string, roles: string[]) {
     localStorage.setItem('token', token);
     localStorage.setItem('expirationDate', expirationDate.toISOString());
     localStorage.setItem('userId', userId);
+    localStorage.setItem('roles', JSON.stringify(roles));
   }
 
   private clearAuthData() {
     localStorage.removeItem('token');
     localStorage.removeItem('expirationDate');
     localStorage.removeItem('userId');
+    localStorage.removeItem('roles');
   }
 
   private getAuthData() {
     const token = localStorage.getItem('token');
     const expirationDate = localStorage.getItem('expirationDate');
     const userId = localStorage.getItem('userId');
+    const rolesVal = localStorage.getItem('roles');
+    let roles;
+    if (rolesVal) {
+      roles = JSON.parse(rolesVal);
+    }
     if (!token || !expirationDate) {
       return;
     }
-    return { token, expirationDate: new Date(expirationDate), userId };
+    return { token, expirationDate: new Date(expirationDate), userId, roles };
   }
 }

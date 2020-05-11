@@ -9,7 +9,7 @@
         <img [src]="post.imagePath" [alt]="post.title">
       </div>
       <p class="content">{{post.content}}</p>
-      <div *ngIf="userIsAuthenticated && userId === post.creator" class="actions">
+      <div *ngIf="showActions(post)" class="actions">
         <a class="action-button" [routerLink]="['/edit', post.id]">Edit</a>
         <button class="action-button" (click)="onDelete(post.id)">Delete</button>
       </div>

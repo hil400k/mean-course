@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./knowledges-page.component.scss']
 })
 export class KnowledgesPageComponent {
-
+  code = `
+    <div>Super</div>
+    <h1>dsfsfsdf</h1>
+  `;
 }

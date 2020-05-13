@@ -11,6 +11,7 @@ import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { PostsModule } from './posts/posts.module';
 import { UiModule } from './ui/ui.module';
+import { KnowledgesModule } from './knowledges/knowledges.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { UiModule } from './ui/ui.module';
     BrowserAnimationsModule,
     HttpClientModule,
     PostsModule,
+    KnowledgesModule,
     UiModule,
   ],
   providers: [

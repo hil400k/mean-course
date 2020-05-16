@@ -13,6 +13,12 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "ua": "src/locale/source.ua.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -61,6 +67,10 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "ua": {
+              "localize": ["ua"],
+              "main": "src/main.ts"
             }
           }
         },
@@ -72,6 +82,9 @@
           "configurations": {
             "production": {
               "browserTarget": "mean-course:build:production"
+            },
+            "ua": {
+              "browserTarget": "mean-course:build:ua"
             }
           }
         },
